@@ -1,0 +1,25 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "NYC Open Data Team"
+        url: "https://opendata.cityofnewyork.us/"
+      }
+      description: "Helps New Yorkers use and learn about City data. Open Data is free public data published by New York City agencies and other partners. Access datasets by agency, category, and explore APIs for NYC government data."
+      servers: [
+        {
+          description: "NYC Open Data API Server"
+          url: "https://data.cityofnewyork.us"
+        }
+      ]
+      termsOfService: "https://opendata.cityofnewyork.us/overview/#termsofuse"
+      title: "NYC Open Data"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

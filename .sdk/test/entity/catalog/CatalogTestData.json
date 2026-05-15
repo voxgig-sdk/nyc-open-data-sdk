@@ -1,0 +1,22 @@
+{
+  "existing": {
+    "catalog": {
+      "CATALOG00": {
+        "resource": {}
+      },
+      "CATALOG01": {
+        "resource": {}
+      },
+      "CATALOG02": {
+        "resource": {}
+      }
+    }
+  },
+  "new": {
+    "catalog": {
+      "catalog_ref01": {
+        "resource": {}
+      }
+    }
+  }
+}

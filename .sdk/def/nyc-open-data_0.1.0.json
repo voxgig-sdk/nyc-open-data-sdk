@@ -1,0 +1,327 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "NYC Open Data",
+    "description": "Helps New Yorkers use and learn about City data. Open Data is free public data published by New York City agencies and other partners. Access datasets by agency, category, and explore APIs for NYC government data.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "NYC Open Data Team",
+      "url": "https://opendata.cityofnewyork.us/"
+    },
+    "termsOfService": "https://opendata.cityofnewyork.us/overview/#termsofuse"
+  },
+  "servers": [
+    {
+      "url": "https://data.cityofnewyork.us",
+      "description": "NYC Open Data API Server"
+    }
+  ],
+  "paths": {
+    "/api/catalog/v1": {
+      "get": {
+        "summary": "Search datasets in the NYC Open Data catalog",
+        "description": "Search and browse datasets published by New York City agencies. Filter by agency, category, or search terms to discover available open data.",
+        "operationId": "searchDatasets",
+        "tags": [
+          "Catalog"
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Search query to filter datasets",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "agency",
+            "in": "query",
+            "description": "Filter datasets by NYC agency",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "description": "Filter datasets by category (e.g., Business, Education, Environment)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Business",
+                "Education",
+                "Environment",
+                "Health",
+                "Transportation",
+                "Public Safety",
+                "Recreation",
+                "Social Services"
+              ]
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of results to return",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 10,
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Number of results to skip for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0,
+              "minimum": 0
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sort order for results",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "relevance",
+                "newest",
+                "popular",
+                "alphabetical"
+              ],
+              "default": "relevance"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of datasets",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "resultSetSize": {
+                      "type": "integer",
+                      "description": "Total number of results matching the query"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "resource": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "description": "Unique identifier for the dataset"
+                              },
+                              "name": {
+                                "type": "string",
+                                "description": "Name of the dataset"
+                              },
+                              "description": {
+                                "type": "string",
+                                "description": "Detailed description of the dataset"
+                              },
+                              "type": {
+                                "type": "string",
+                                "description": "Type of resource (e.g., dataset, chart, map)"
+                              },
+                              "category": {
+                                "type": "string",
+                                "description": "Category classification"
+                              },
+                              "agency": {
+                                "type": "string",
+                                "description": "NYC agency that published the dataset"
+                              },
+                              "createdAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Date and time the dataset was created"
+                              },
+                              "updatedAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Date and time the dataset was last updated"
+                              },
+                              "viewCount": {
+                                "type": "integer",
+                                "description": "Number of views for this dataset"
+                              },
+                              "downloadCount": {
+                                "type": "integer",
+                                "description": "Number of downloads for this dataset"
+                              },
+                              "permalink": {
+                                "type": "string",
+                                "format": "uri",
+                                "description": "Permanent link to the dataset"
+                              },
+                              "columns": {
+                                "type": "array",
+                                "description": "List of columns/fields in the dataset",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "fieldName": {
+                                      "type": "string"
+                                    },
+                                    "dataTypeName": {
+                                      "type": "string"
+                                    },
+                                    "description": {
+                                      "type": "string"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    },
+                    "code": {
+                      "type": "string",
+                      "description": "Error code"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests - rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Rate limit error message"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Dataset": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the dataset"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the dataset"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed description of the dataset"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of resource"
+          },
+          "category": {
+            "type": "string",
+            "description": "Category classification"
+          },
+          "agency": {
+            "type": "string",
+            "description": "NYC agency that published the dataset"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "viewCount": {
+            "type": "integer"
+          },
+          "downloadCount": {
+            "type": "integer"
+          },
+          "permalink": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "code": {
+            "type": "string",
+            "description": "Error code"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Catalog",
+      "description": "Operations for searching and browsing the NYC Open Data catalog"
+    }
+  ]
+}

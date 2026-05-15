@@ -1,0 +1,99 @@
+# Entity: catalog
+
+main: kit: entity: catalog: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "resource"
+      req: false
+      type: "`$OBJECT`"
+    }
+  ]
+
+  name: "catalog"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "agency"
+                orig: "agency"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "category"
+                orig: "category"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 10
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "offset"
+                orig: "offset"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "q"
+                orig: "q"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "relevance"
+                kind: "query"
+                name: "sort"
+                orig: "sort"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/catalog/v1"
+          parts: [
+            "api"
+            "catalog"
+            "v1"
+          ]
+          select: {
+            "$action": "v1"
+            exist: [
+              "agency"
+              "category"
+              "limit"
+              "offset"
+              "q"
+              "sort"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
