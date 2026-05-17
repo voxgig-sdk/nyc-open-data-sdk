@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/nyc-open-data-sdk"
-	"github.com/voxgig-sdk/nyc-open-data-sdk/core"
+	sdk "github.com/voxgig-sdk/nyc-open-data-sdk/go"
+	"github.com/voxgig-sdk/nyc-open-data-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/nyc-open-data-sdk/go/utility/struct"
 )
 
 func TestCatalogEntity(t *testing.T) {

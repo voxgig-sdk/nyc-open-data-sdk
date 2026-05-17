@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/nyc-open-data-sdk/core"
+import "github.com/voxgig-sdk/nyc-open-data-sdk/go/core"
 
 func makeRequestUtil(ctx *core.Context) (*core.Response, error) {
 	if ctx.Out["request"] != nil {

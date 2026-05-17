@@ -1,10 +1,10 @@
 package voxgignycopendatasdk
 
 import (
-	"github.com/voxgig-sdk/nyc-open-data-sdk/core"
-	"github.com/voxgig-sdk/nyc-open-data-sdk/entity"
-	"github.com/voxgig-sdk/nyc-open-data-sdk/feature"
-	_ "github.com/voxgig-sdk/nyc-open-data-sdk/utility"
+	"github.com/voxgig-sdk/nyc-open-data-sdk/go/core"
+	"github.com/voxgig-sdk/nyc-open-data-sdk/go/entity"
+	"github.com/voxgig-sdk/nyc-open-data-sdk/go/feature"
+	_ "github.com/voxgig-sdk/nyc-open-data-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

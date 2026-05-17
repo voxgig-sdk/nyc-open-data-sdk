@@ -29,7 +29,7 @@ class Config {
 
 
   options = {
-    base: 'https://data.cityofnewyork.us',
+    base: '$$main.kit.info.servers.0.url$$',
 
     'AUTHBLOCK'headers: 'HEADERS',
 

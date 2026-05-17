@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/nyc-open-data-sdk"
-	"github.com/voxgig-sdk/nyc-open-data-sdk/core"
+	sdk "github.com/voxgig-sdk/nyc-open-data-sdk/go"
+	"github.com/voxgig-sdk/nyc-open-data-sdk/go/core"
 )
 
 func TestCatalogDirect(t *testing.T) {

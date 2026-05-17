@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/nyc-open-data-sdk/core"
+	"github.com/voxgig-sdk/nyc-open-data-sdk/go/core"
 )
 
 type BaseFeature struct {
