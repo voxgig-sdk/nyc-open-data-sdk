@@ -18,8 +18,20 @@ main: {
       termsOfService: "https://opendata.cityofnewyork.us/overview/#termsofuse"
       title: "NYC Open Data"
       version: "1.0.0"
+      tagline: "Query thousands of New York City government datasets through the Socrata-powered NYC Open Data portal"
+      homepage: "https://opendata.cityofnewyork.us/"
+      docs_url: "https://dev.socrata.com/"
+      about_md: `[NYC Open Data](https://opendata.cityofnewyork.us/) is the City of New York's public catalogue of datasets published by City agencies and partners. It is operated by the City of New York and hosted on the [Socrata Open Data API (SODA)](https://dev.socrata.com/) platform at \`https://data.cityofnewyork.us\`.
+
+The portal exposes datasets covering subjects such as 311 service requests, business, education, environment, transportation, and public safety. Each dataset is addressable as a resource at \`https://data.cityofnewyork.us/resource/{dataset-id}.json\` (for example, 311 Service Requests at \`/resource/erm2-nwe9.json\`).
+
+Because the platform is built on Socrata, datasets can typically be queried using SoQL (the Socrata Query Language) with parameters such as \`$select\`, \`$where\`, \`$order\`, \`$limit\`, and \`$offset\`. Datasets are also discoverable via the catalog by agency, category, publication date, and popularity.
+
+Anonymous requests are allowed; heavier use is generally expected to register and send a Socrata app token. Consult the Socrata documentation for current authentication and throttling guidance.`
+      entity_desc: {
+        catalog: "The dataset catalog exposed by the NYC Open Data Socrata portal; individual datasets are fetched as JSON resources at `https://data.cityofnewyork.us/resource/{dataset-id}.json`."
+      }
+      auth: false
     }
   }
-}
-
 }

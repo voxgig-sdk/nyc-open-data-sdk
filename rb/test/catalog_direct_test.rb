@@ -62,14 +62,12 @@ def catalog_direct_setup(mockres)
   env = Runner.env_override({
     "NYCOPENDATA_TEST_CATALOG_ENTID" => {},
     "NYCOPENDATA_TEST_LIVE" => "FALSE",
-    "NYCOPENDATA_APIKEY" => "NONE",
   })
 
   live = env["NYCOPENDATA_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["NYCOPENDATA_APIKEY"],
     }
     client = NycOpenDataSDK.new(merged_opts)
     return {

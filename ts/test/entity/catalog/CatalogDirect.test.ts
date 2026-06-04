@@ -79,14 +79,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'NYCOPENDATA_TEST_CATALOG_ENTID': {},
     'NYCOPENDATA_TEST_LIVE': 'FALSE',
-    'NYCOPENDATA_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.NYCOPENDATA_TEST_LIVE
 
   if (live) {
     const client = new NycOpenDataSDK({
-      apikey: env.NYCOPENDATA_APIKEY,
     })
 
     let idmap: any = env['NYCOPENDATA_TEST_CATALOG_ENTID']
