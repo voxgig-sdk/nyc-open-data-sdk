@@ -10,7 +10,7 @@ The PHP SDK for the NycOpenData API — an entity-oriented client using PHP conv
 
 ## Install
 ```bash
-composer require voxgig/nyc-open-data-sdk
+composer require voxgig-sdk/nyc-open-data
 ```
 
 

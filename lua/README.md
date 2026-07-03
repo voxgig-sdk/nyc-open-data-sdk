@@ -10,7 +10,7 @@ The Lua SDK for the NycOpenData API — an entity-oriented client using Lua conv
 
 ## Install
 ```bash
-luarocks install nyc-open-data-sdk
+luarocks install voxgig-sdk-nyc-open-data
 ```
 
 If the module is not yet published, add the source directory to

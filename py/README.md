@@ -10,7 +10,7 @@ The Python SDK for the NycOpenData API — an entity-oriented client following P
 
 ## Install
 ```bash
-pip install nyc-open-data-sdk
+pip install voxgig-sdk-nyc-open-data
 ```
 
 Or install from source:

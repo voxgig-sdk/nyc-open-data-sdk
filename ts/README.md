@@ -10,7 +10,7 @@ The TypeScript SDK for the NycOpenData API — a type-safe, entity-oriented clie
 
 ## Install
 ```bash
-npm install nyc-open-data
+npm install @voxgig-sdk/nyc-open-data
 ```
 ## Tutorial: your first API call
 

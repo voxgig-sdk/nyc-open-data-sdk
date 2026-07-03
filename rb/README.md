@@ -10,13 +10,13 @@ The Ruby SDK for the NycOpenData API — an entity-oriented client using idiomat
 
 ## Install
 ```bash
-gem install nyc-open-data-sdk
+gem install voxgig-sdk-nyc-open-data
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "nyc-open-data-sdk"
+gem "voxgig-sdk-nyc-open-data"
 ```
 
 Then run:
