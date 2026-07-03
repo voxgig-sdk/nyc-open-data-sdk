@@ -93,12 +93,14 @@ func catalogDirectSetup(mockres any) *catalogDirectSetupResult {
 	env := envOverride(map[string]any{
 		"NYCOPENDATA_TEST_CATALOG_ENTID": map[string]any{},
 		"NYCOPENDATA_TEST_LIVE":    "FALSE",
+		"NYCOPENDATA_APIKEY":       "NONE",
 	})
 
 	live := env["NYCOPENDATA_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["NYCOPENDATA_APIKEY"],
 		}
 		client := sdk.NewNycOpenDataSDK(mergedOpts)
 

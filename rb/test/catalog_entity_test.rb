@@ -83,6 +83,7 @@ def catalog_basic_setup(extra)
     "NYCOPENDATA_TEST_CATALOG_ENTID" => idmap,
     "NYCOPENDATA_TEST_LIVE" => "FALSE",
     "NYCOPENDATA_TEST_EXPLAIN" => "FALSE",
+    "NYCOPENDATA_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,6 +95,7 @@ def catalog_basic_setup(extra)
   if env["NYCOPENDATA_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
+        "apikey" => env["NYCOPENDATA_APIKEY"],
       },
       extra || {},
     ])

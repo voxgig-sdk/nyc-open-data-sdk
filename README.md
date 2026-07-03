@@ -1,18 +1,8 @@
 # NycOpenData SDK
 
-Query thousands of New York City government datasets through the Socrata-powered NYC Open Data portal
+NYC Open Data client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About NYC Open Data
-
-[NYC Open Data](https://opendata.cityofnewyork.us/) is the City of New York's public catalogue of datasets published by City agencies and partners. It is operated by the City of New York and hosted on the [Socrata Open Data API (SODA)](https://dev.socrata.com/) platform at `https://data.cityofnewyork.us`.
-
-The portal exposes datasets covering subjects such as 311 service requests, business, education, environment, transportation, and public safety. Each dataset is addressable as a resource at `https://data.cityofnewyork.us/resource/{dataset-id}.json` (for example, 311 Service Requests at `/resource/erm2-nwe9.json`).
-
-Because the platform is built on Socrata, datasets can typically be queried using SoQL (the Socrata Query Language) with parameters such as `$select`, `$where`, `$order`, `$limit`, and `$offset`. Datasets are also discoverable via the catalog by agency, category, publication date, and popularity.
-
-Anonymous requests are allowed; heavier use is generally expected to register and send a Socrata app token. Consult the Socrata documentation for current authentication and throttling guidance.
 
 ## Try it
 
@@ -46,29 +36,31 @@ gem install nyc-open-data-sdk
 luarocks install nyc-open-data-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { NycOpenDataSDK } from 'nyc-open-data'
 
-const client = new NycOpenDataSDK({})
+const client = new NycOpenDataSDK({
+  apikey: process.env.NYC-OPEN-DATA_APIKEY,
+})
 
 // List all catalogs
 const catalogs = await client.Catalog().list()
+console.log(catalogs.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -98,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Catalog** | The dataset catalog exposed by the NYC Open Data Socrata portal; individual datasets are fetched as JSON resources at `https://data.cityofnewyork.us/resource/{dataset-id}.json`. | `/api/catalog/v1` |
+| **Catalog** |  | `/api/catalog/v1` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -108,12 +100,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from nycopendata_sdk import NycOpenDataSDK
 
-client = NycOpenDataSDK({})
+client = NycOpenDataSDK({
+    "apikey": os.environ.get("NYC-OPEN-DATA_APIKEY"),
+})
 
 # List all catalogs
-catalogs, err = client.Catalog(None).list(None, None)
+catalogs, err = client.Catalog().list()
+print(catalogs)
 ```
 
 ### PHP
@@ -122,10 +118,13 @@ catalogs, err = client.Catalog(None).list(None, None)
 <?php
 require_once 'nycopendata_sdk.php';
 
-$client = new NycOpenDataSDK([]);
+$client = new NycOpenDataSDK([
+    "apikey" => getenv("NYC-OPEN-DATA_APIKEY"),
+]);
 
 // List all catalogs
-[$catalogs, $err] = $client->Catalog(null)->list(null, null);
+[$catalogs, $err] = $client->Catalog()->list();
+print_r($catalogs);
 ```
 
 ### Golang
@@ -133,10 +132,13 @@ $client = new NycOpenDataSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/nyc-open-data-sdk/go"
 
-client := sdk.NewNycOpenDataSDK(map[string]any{})
+client := sdk.NewNycOpenDataSDK(map[string]any{
+    "apikey": os.Getenv("NYC-OPEN-DATA_APIKEY"),
+})
 
 // List all catalogs
 catalogs, err := client.Catalog(nil).List(nil, nil)
+fmt.Println(catalogs)
 ```
 
 ### Ruby
@@ -144,10 +146,13 @@ catalogs, err := client.Catalog(nil).List(nil, nil)
 ```ruby
 require_relative "NycOpenData_sdk"
 
-client = NycOpenDataSDK.new({})
+client = NycOpenDataSDK.new({
+  "apikey" => ENV["NYC-OPEN-DATA_APIKEY"],
+})
 
 # List all catalogs
-catalogs, err = client.Catalog(nil).list(nil, nil)
+catalogs, err = client.Catalog().list
+puts catalogs
 ```
 
 ### Lua
@@ -155,10 +160,13 @@ catalogs, err = client.Catalog(nil).list(nil, nil)
 ```lua
 local sdk = require("nyc-open-data_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("NYC-OPEN-DATA_APIKEY"),
+})
 
 -- List all catalogs
-local catalogs, err = client:Catalog(nil):list(nil, nil)
+local catalogs, err = client:Catalog():list()
+print(catalogs)
 ```
 
 ## Unit testing in offline mode
@@ -177,25 +185,21 @@ const result = await client.Catalog().load({ id: 'test01' })
 ### Python
 
 ```python
-client = NycOpenDataSDK.test(None, None)
-result, err = client.Catalog(None).load(
-    {"id": "test01"}, None
-)
+client = NycOpenDataSDK.test()
+result, err = client.Catalog().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = NycOpenDataSDK::test(null, null);
-[$result, $err] = $client->Catalog(null)->load(
-    ["id" => "test01"], null
-);
+$client = NycOpenDataSDK::test();
+[$result, $err] = $client->Catalog()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Catalog(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -204,19 +208,15 @@ result, err := client.Catalog(nil).Load(
 ### Ruby
 
 ```ruby
-client = NycOpenDataSDK.test(nil, nil)
-result, err = client.Catalog(nil).load(
-  { "id" => "test01" }, nil
-)
+client = NycOpenDataSDK.test
+result, err = client.Catalog().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Catalog(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Catalog():load({ id = "test01" })
 ```
 
 ## How it works
@@ -320,11 +320,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the NYC Open Data
-
-- Upstream: [https://opendata.cityofnewyork.us/](https://opendata.cityofnewyork.us/)
-- API docs: [https://dev.socrata.com/](https://dev.socrata.com/)
 
 ---
 
