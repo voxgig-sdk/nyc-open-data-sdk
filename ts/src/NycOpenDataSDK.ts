@@ -204,14 +204,7 @@ class NycOpenDataSDK {
 
 
 
-  _catalog?: CatalogEntity
-
-  // Idiomatic facade: `client.catalog.list()` / `client.catalog.load({ id })`.
-  get catalog(): CatalogEntity {
-    return (this._catalog ??= new CatalogEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.catalog` instead. */
+  // Entity access: `client.Catalog().list()` / `client.Catalog().load({ id })`.
   Catalog(data?: any) {
     const self = this
     return new CatalogEntity(self,data)

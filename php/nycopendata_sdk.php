@@ -233,10 +233,10 @@ class NycOpenDataSDK
 
     private $_catalog = null;
 
-    // Idiomatic facade: $client->catalog()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Catalog() (PHP method
-    // names are case-insensitive).
-    public function catalog($data = null)
+    // Canonical facade: $client->Catalog()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->catalog()
+    // resolves here too.
+    public function Catalog($data = null)
     {
         require_once __DIR__ . '/entity/catalog_entity.php';
         if ($data === null) {

@@ -31,14 +31,16 @@ from nycopendata_sdk import NycOpenDataSDK
 client = NycOpenDataSDK()
 ```
 
-### 2. List catalogs
+### 2. List catalog records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.catalog.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    catalogs = client.Catalog().list({})
+    for catalog in catalogs:
+        print(catalog)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -86,8 +88,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = NycOpenDataSDK.test()
 
-result = client.catalog.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+catalog = client.Catalog().load({"id": "test01"})
+# catalog contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -220,7 +223,7 @@ API path: `/api/catalog/v1`
 
 ### Catalog
 
-Create an instance: `const catalog = client.catalog`
+Create an instance: `catalog = client.Catalog()`
 
 #### Operations
 
@@ -236,8 +239,8 @@ Create an instance: `const catalog = client.catalog`
 
 #### Example: List
 
-```ts
-const catalogs = await client.catalog.list()
+```python
+catalogs = client.Catalog().list({})
 ```
 
 
@@ -311,7 +314,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-catalog = client.catalog
+catalog = client.Catalog()
 catalog.load({"id": "example_id"})
 
 # catalog.data_get() now returns the loaded catalog data

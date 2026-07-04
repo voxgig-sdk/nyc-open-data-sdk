@@ -29,18 +29,16 @@ require_once 'nycopendata_sdk.php';
 $client = new NycOpenDataSDK();
 ```
 
-### 2. List catalogs
+### 2. List catalog records
 
 ```php
 try {
-    $result = $client->catalog()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Catalog records — iterate directly.
+    $catalogs = $client->Catalog()->list();
+    foreach ($catalogs as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -86,13 +84,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = NycOpenDataSDK::test();
+$client = NycOpenDataSDK::test([
+    "entity" => ["catalog" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->catalog()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$catalog = $client->Catalog()->load(["id" => "test01"]);
+print_r($catalog);
 ```
 
 ### Use a custom fetch function
@@ -228,7 +230,7 @@ API path: `/api/catalog/v1`
 
 ### Catalog
 
-Create an instance: `const catalog = client.catalog`
+Create an instance: `$catalog = $client->Catalog();`
 
 #### Operations
 
@@ -244,8 +246,9 @@ Create an instance: `const catalog = client.catalog`
 
 #### Example: List
 
-```ts
-const catalogs = await client.catalog.list()
+```php
+// list() returns an array of Catalog records (throws on error).
+$catalogs = $client->Catalog()->list();
 ```
 
 
@@ -320,7 +323,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$catalog = $client->catalog();
+$catalog = $client->Catalog();
 $catalog->load(["id" => "example_id"]);
 
 // $catalog->dataGet() now returns the loaded catalog data

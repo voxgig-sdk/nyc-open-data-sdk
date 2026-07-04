@@ -28,16 +28,14 @@ require_relative "NycOpenData_sdk"
 client = NycOpenDataSDK.new
 ```
 
-### 2. List catalogs
+### 2. List catalog records
 
 ```ruby
 begin
-  result = client.catalog.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Catalog records — iterate directly.
+  catalogs = client.Catalog.list
+  catalogs.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -85,13 +83,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = NycOpenDataSDK.test
+client = NycOpenDataSDK.test({
+  "entity" => { "catalog" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.catalog.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+catalog = client.Catalog.load({ "id" => "test01" })
+puts catalog
 ```
 
 ### Use a custom fetch function
@@ -223,7 +225,7 @@ API path: `/api/catalog/v1`
 
 ### Catalog
 
-Create an instance: `const catalog = client.catalog`
+Create an instance: `catalog = client.Catalog`
 
 #### Operations
 
@@ -239,8 +241,9 @@ Create an instance: `const catalog = client.catalog`
 
 #### Example: List
 
-```ts
-const catalogs = await client.catalog.list()
+```ruby
+# list returns an Array of Catalog records (raises on error).
+catalogs = client.Catalog.list
 ```
 
 
@@ -315,7 +318,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-catalog = client.catalog
+catalog = client.Catalog
 catalog.load({ "id" => "example_id" })
 
 # catalog.data_get now returns the loaded catalog data

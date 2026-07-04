@@ -80,7 +80,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## CatalogEntity
 
 ```python
-catalog = client.catalog
+catalog = client.Catalog()
 ```
 
 ### Fields
@@ -96,7 +96,9 @@ catalog = client.catalog
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.catalog.list({})
+results = client.Catalog().list({})
+for catalog in results:
+    print(catalog)
 ```
 
 ### Common Methods

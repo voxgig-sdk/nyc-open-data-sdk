@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:catalog():list() / client:catalog():load({ id = ... })
-function NycOpenDataSDK:catalog(data)
+-- Idiomatic facade: client:Catalog():list() / client:Catalog():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function NycOpenDataSDK:Catalog(data)
   local EntityMod = require("entity.catalog_entity")
   if data == nil then
     if self._catalog == nil then
@@ -253,12 +254,6 @@ function NycOpenDataSDK:catalog(data)
     end
     return self._catalog
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:catalog() instead.
-function NycOpenDataSDK:Catalog(data)
-  local EntityMod = require("entity.catalog_entity")
   return EntityMod.new(self, data)
 end
 

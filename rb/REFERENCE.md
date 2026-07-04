@@ -86,7 +86,7 @@ same parameters as `direct()`. Raises on error.
 ## CatalogEntity
 
 ```ruby
-catalog = client.catalog
+catalog = client.Catalog
 ```
 
 ### Fields
@@ -102,7 +102,7 @@ catalog = client.catalog
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.catalog.list(nil)
+results = client.Catalog.list(nil)
 ```
 
 ### Common Methods

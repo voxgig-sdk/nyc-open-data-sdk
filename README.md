@@ -26,9 +26,11 @@ import { NycOpenDataSDK } from '@voxgig-sdk/nyc-open-data'
 
 const client = new NycOpenDataSDK()
 
-// List all catalogs
-const catalogs = await client.catalog.list()
-console.log(catalogs.data)
+// List all catalogs (returns Catalog[])
+const catalogs = await client.Catalog().list()
+for (const catalog of catalogs) {
+  console.log(catalog)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -83,9 +85,10 @@ from nycopendata_sdk import NycOpenDataSDK
 
 client = NycOpenDataSDK()
 
-# List all catalogs
-catalogs = client.catalog.list()
-print(catalogs)
+# List all catalogs (returns a list, raises on error)
+catalogs = client.Catalog().list({})
+for catalog in catalogs:
+    print(catalog)
 ```
 
 ### PHP
@@ -96,8 +99,8 @@ require_once 'nycopendata_sdk.php';
 
 $client = new NycOpenDataSDK();
 
-// List all catalogs (throws on error)
-$catalogs = $client->catalog()->list();
+// List all catalogs (returns an array; throws on error)
+$catalogs = $client->Catalog()->list();
 print_r($catalogs);
 ```
 
@@ -120,8 +123,8 @@ require_relative "NycOpenData_sdk"
 
 client = NycOpenDataSDK.new
 
-# List all catalogs
-catalogs = client.catalog.list
+# List all catalogs (returns an Array; raises on error)
+catalogs = client.Catalog.list
 puts catalogs
 ```
 
@@ -133,7 +136,7 @@ local sdk = require("nyc-open-data_sdk")
 local client = sdk.new()
 
 -- List all catalogs
-local catalogs, err = client:catalog():list()
+local catalogs, err = client:Catalog():list()
 print(catalogs)
 ```
 
@@ -146,22 +149,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = NycOpenDataSDK.test()
-const result = await client.catalog.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const catalog = await client.Catalog().load({ id: 'test01' })
+// catalog is a bare Catalog populated with mock data
+console.log(catalog)
 ```
 
 ### Python
 
 ```python
 client = NycOpenDataSDK.test()
-result = client.catalog.load({"id": "test01"})
+catalog = client.Catalog().load({"id": "test01"})
+print(catalog)
 ```
 
 ### PHP
 
 ```php
-$client = NycOpenDataSDK::test();
-$result = $client->catalog()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = NycOpenDataSDK::test([
+    "entity" => ["catalog" => ["test01" => ["id" => "test01"]]],
+]);
+$catalog = $client->Catalog()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -176,15 +184,18 @@ result, err := client.Catalog(nil).Load(
 ### Ruby
 
 ```ruby
-client = NycOpenDataSDK.test
-result = client.catalog.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = NycOpenDataSDK.test({
+  "entity" => { "catalog" => { "test01" => { "id" => "test01" } } },
+})
+catalog = client.Catalog.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:catalog():load({ id = "test01" })
+local result, err = client:Catalog():load({ id = "test01" })
 ```
 
 ## How it works
@@ -232,6 +243,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

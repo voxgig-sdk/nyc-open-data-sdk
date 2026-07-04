@@ -85,7 +85,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## CatalogEntity
 
 ```php
-$catalog = $client->catalog();
+$catalog = $client->Catalog();
 ```
 
 ### Fields
@@ -101,7 +101,7 @@ $catalog = $client->catalog();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->catalog()->list([]);
+$results = $client->Catalog()->list([]);
 ```
 
 ### Common Methods

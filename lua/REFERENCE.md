@@ -83,7 +83,7 @@ same parameters as `direct()`.
 ## CatalogEntity
 
 ```lua
-local catalog = client:catalog(nil)
+local catalog = client:Catalog(nil)
 ```
 
 ### Fields
@@ -99,7 +99,7 @@ local catalog = client:catalog(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:catalog():list()
+local results, err = client:Catalog():list()
 ```
 
 ### Common Methods

@@ -31,17 +31,17 @@ local sdk = require("nyc-open-data_sdk")
 local client = sdk.new()
 ```
 
-### 2. List catalogs
+### 2. List catalog records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:catalog():list()
+local catalogs, err = client:Catalog():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(catalogs) do
+  print(item["id"], item["name"])
 end
 ```
 
@@ -88,8 +88,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:catalog():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Catalog():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -189,17 +189,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local catalog, err = client:Catalog():load({ id = "example_id" })
+    if err then error(err) end
+    -- catalog is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -220,7 +225,7 @@ API path: `/api/catalog/v1`
 
 ### Catalog
 
-Create an instance: `const catalog = client.catalog`
+Create an instance: `local catalog = client:Catalog(nil)`
 
 #### Operations
 
@@ -236,8 +241,8 @@ Create an instance: `const catalog = client.catalog`
 
 #### Example: List
 
-```ts
-const catalogs = await client.catalog.list()
+```lua
+local catalogs, err = client:Catalog():list()
 ```
 
 
@@ -312,7 +317,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local catalog = client:catalog()
+local catalog = client:Catalog()
 catalog:load({ id = "example_id" })
 
 -- catalog:data_get() now returns the loaded catalog data

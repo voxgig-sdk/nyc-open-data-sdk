@@ -208,13 +208,7 @@ class NycOpenDataSDK
   end
 
 
-  # Idiomatic facade: client.catalog.list / client.catalog.load({ "id" => ... })
-  def catalog
-    require_relative 'entity/catalog_entity'
-    @catalog ||= CatalogEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.catalog instead.
+  # Canonical facade: client.Catalog.list / client.Catalog.load({ "id" => ... })
   def Catalog(data = nil)
     require_relative 'entity/catalog_entity'
     CatalogEntity.new(self, data)
