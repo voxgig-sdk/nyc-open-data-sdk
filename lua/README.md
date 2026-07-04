@@ -9,12 +9,9 @@ The Lua SDK for the NycOpenData API — an entity-oriented client using Lua conv
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-nyc-open-data
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/nyc-open-data-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("nyc-open-data_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("NYC-OPEN-DATA_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 2. List catalogs
 
 ```lua
-local result, err = client:Catalog():list()
+local result, err = client:catalog():list()
 if err then error(err) end
 
 if type(result) == "table" then
@@ -93,7 +88,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:NycOpenData():load({ id = "test01" })
+local result, err = client:catalog():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -126,8 +121,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-NYC-OPEN-DATA_TEST_LIVE=TRUE
-NYC-OPEN-DATA_APIKEY=<your-key>
+NYC_OPEN_DATA_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -150,7 +144,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -227,7 +220,7 @@ API path: `/api/catalog/v1`
 
 ### Catalog
 
-Create an instance: `const catalog = client.Catalog()`
+Create an instance: `const catalog = client.catalog`
 
 #### Operations
 
@@ -244,7 +237,7 @@ Create an instance: `const catalog = client.Catalog()`
 #### Example: List
 
 ```ts
-const catalogs = await client.Catalog().list()
+const catalogs = await client.catalog.list()
 ```
 
 
@@ -319,11 +312,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local catalog = client:catalog()
+catalog:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- catalog:data_get() now returns the loaded catalog data
+-- catalog:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -245,6 +245,9 @@ func (sdk *NycOpenDataSDK) Direct(fetchargs map[string]any) (map[string]any, err
 }
 
 
+// Catalog returns a Catalog entity bound to this client.
+// Idiomatic usage: client.Catalog(nil).List(nil, nil) or
+// client.Catalog(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *NycOpenDataSDK) Catalog(data map[string]any) NycOpenDataEntity {
 	return NewCatalogEntityFunc(sdk, data)
 }

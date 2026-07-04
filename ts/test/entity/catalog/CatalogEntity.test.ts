@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'NYC_OPEN_DATA_TEST_CATALOG_ENTID': idmap,
     'NYC_OPEN_DATA_TEST_LIVE': 'FALSE',
     'NYC_OPEN_DATA_TEST_EXPLAIN': 'FALSE',
-    'NYC_OPEN_DATA_APIKEY': 'NONE',
   })
 
   idmap = env['NYC_OPEN_DATA_TEST_CATALOG_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new NycOpenDataSDK(merge([
       {
-        apikey: env.NYC_OPEN_DATA_APIKEY,
       },
       extra
     ]))

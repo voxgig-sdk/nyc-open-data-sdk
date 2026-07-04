@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:catalog():list() / client:catalog():load({ id = ... })
+function NycOpenDataSDK:catalog(data)
+  local EntityMod = require("entity.catalog_entity")
+  if data == nil then
+    if self._catalog == nil then
+      self._catalog = EntityMod.new(self, nil)
+    end
+    return self._catalog
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:catalog() instead.
 function NycOpenDataSDK:Catalog(data)
   local EntityMod = require("entity.catalog_entity")
   return EntityMod.new(self, data)

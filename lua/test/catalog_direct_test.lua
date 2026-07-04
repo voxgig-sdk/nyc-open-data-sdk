@@ -63,14 +63,12 @@ function catalog_direct_setup(mockres)
   local env = runner.env_override({
     ["NYCOPENDATA_TEST_CATALOG_ENTID"] = {},
     ["NYCOPENDATA_TEST_LIVE"] = "FALSE",
-    ["NYCOPENDATA_APIKEY"] = "NONE",
   })
 
   local live = env["NYCOPENDATA_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["NYCOPENDATA_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

@@ -43,8 +43,7 @@ class CatalogEntityTest < Minitest::Test
     catalog_ref01_ent = client.Catalog(nil)
     catalog_ref01_match = {}
 
-    catalog_ref01_list_result, err = catalog_ref01_ent.list(catalog_ref01_match, nil)
-    assert_nil err
+    catalog_ref01_list_result = catalog_ref01_ent.list(catalog_ref01_match, nil)
     assert catalog_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def catalog_basic_setup(extra)
     "NYCOPENDATA_TEST_CATALOG_ENTID" => idmap,
     "NYCOPENDATA_TEST_LIVE" => "FALSE",
     "NYCOPENDATA_TEST_EXPLAIN" => "FALSE",
-    "NYCOPENDATA_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def catalog_basic_setup(extra)
   if env["NYCOPENDATA_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["NYCOPENDATA_APIKEY"],
       },
       extra || {},
     ])

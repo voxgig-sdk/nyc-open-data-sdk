@@ -50,8 +50,7 @@ class CatalogEntityTest extends TestCase
         $catalog_ref01_ent = $client->Catalog(null);
         $catalog_ref01_match = [];
 
-        [$catalog_ref01_list_result, $err] = $catalog_ref01_ent->list($catalog_ref01_match, null);
-        $this->assertNull($err);
+        $catalog_ref01_list_result = $catalog_ref01_ent->list($catalog_ref01_match, null);
         $this->assertIsArray($catalog_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function catalog_basic_setup($extra)
         "NYCOPENDATA_TEST_CATALOG_ENTID" => $idmap,
         "NYCOPENDATA_TEST_LIVE" => "FALSE",
         "NYCOPENDATA_TEST_EXPLAIN" => "FALSE",
-        "NYCOPENDATA_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function catalog_basic_setup($extra)
     if ($env["NYCOPENDATA_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["NYCOPENDATA_APIKEY"],
             ],
             $extra ?? [],
         ]);

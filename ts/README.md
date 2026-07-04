@@ -9,9 +9,12 @@ The TypeScript SDK for the NycOpenData API — a type-safe, entity-oriented clie
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/nyc-open-data
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/nyc-open-data-sdk/releases](https://github.com/voxgig-sdk/nyc-open-data-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { NycOpenDataSDK } from 'nyc-open-data'
+import { NycOpenDataSDK } from '@voxgig-sdk/nyc-open-data'
 
-const client = new NycOpenDataSDK({
-  apikey: process.env.NYC-OPEN-DATA_APIKEY,
-})
+const client = new NycOpenDataSDK()
 ```
 
 ### 2. List catalogs
 
 ```ts
-const result = await client.Catalog().list()
+const result = await client.catalog.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -81,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = NycOpenDataSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.catalog.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -89,7 +90,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new NycOpenDataSDK({ apikey: '...' })
+const client = new NycOpenDataSDK()
 const testClient = client.tester()
 ```
 
@@ -98,7 +99,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.catalog
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -125,7 +126,6 @@ const logger = {
 }
 
 const client = new NycOpenDataSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -135,8 +135,7 @@ const client = new NycOpenDataSDK({
 Create a `.env.local` file at the project root:
 
 ```
-NYC-OPEN-DATA_TEST_LIVE=TRUE
-NYC-OPEN-DATA_APIKEY=<your-key>
+NYC_OPEN_DATA_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -154,7 +153,6 @@ cd ts && npm test
 
 ```ts
 new NycOpenDataSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -165,7 +163,6 @@ new NycOpenDataSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -268,7 +265,7 @@ API path: `/api/catalog/v1`
 
 ### Catalog
 
-Create an instance: `const catalog = client.Catalog()`
+Create an instance: `const catalog = client.catalog`
 
 #### Operations
 
@@ -285,7 +282,7 @@ Create an instance: `const catalog = client.Catalog()`
 #### Example: List
 
 ```ts
-const catalogs = await client.Catalog().list()
+const catalogs = await client.catalog.list()
 ```
 
 
@@ -346,7 +343,7 @@ nyc-open-data/
 Import the SDK from the package root:
 
 ```ts
-import { NycOpenDataSDK } from 'nyc-open-data'
+import { NycOpenDataSDK } from '@voxgig-sdk/nyc-open-data'
 ```
 
 ### Entity state
@@ -356,11 +353,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const catalog = client.catalog
+await catalog.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// catalog.data() now returns the loaded catalog data
+// catalog.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

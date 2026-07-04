@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         name: "NYC Open Data Team"
         url: "https://opendata.cityofnewyork.us/"

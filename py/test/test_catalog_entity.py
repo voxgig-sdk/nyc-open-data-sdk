@@ -50,8 +50,7 @@ class TestCatalogEntity:
         catalog_ref01_ent = client.Catalog(None)
         catalog_ref01_match = {}
 
-        catalog_ref01_list_result, err = catalog_ref01_ent.list(catalog_ref01_match, None)
-        assert err is None
+        catalog_ref01_list_result = catalog_ref01_ent.list(catalog_ref01_match, None)
         assert isinstance(catalog_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _catalog_basic_setup(extra):
         "NYCOPENDATA_TEST_CATALOG_ENTID": idmap,
         "NYCOPENDATA_TEST_LIVE": "FALSE",
         "NYCOPENDATA_TEST_EXPLAIN": "FALSE",
-        "NYCOPENDATA_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _catalog_basic_setup(extra):
     if env.get("NYCOPENDATA_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("NYCOPENDATA_APIKEY"),
             },
             extra or {},
         ])
