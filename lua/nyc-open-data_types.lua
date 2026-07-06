@@ -10,6 +10,7 @@
 ---@field resource? table
 
 ---@class CatalogListMatch
+---@field resource? table
 
 local M = {}
 

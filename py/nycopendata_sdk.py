@@ -221,7 +221,7 @@ class NycOpenDataSDK:
 
 
     def Catalog(self, data=None) -> "CatalogEntity":
-        """Entity factory: client.Catalog().list({}) / client.Catalog().load({"id": ...})."""
+        """Entity factory: client.Catalog().list() / client.Catalog().load({"id": ...})."""
         from entity.catalog_entity import CatalogEntity
         return CatalogEntity(self, data)
 

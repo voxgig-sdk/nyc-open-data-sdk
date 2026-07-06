@@ -13,8 +13,7 @@ type Catalog struct {
 	Resource *map[string]any `json:"resource,omitempty"`
 }
 
-// CatalogListMatch mirrors the catalog fields as an all-optional match
-// filter (Go analog of Partial<Catalog>).
+// CatalogListMatch is the typed request payload for Catalog.ListTyped.
 type CatalogListMatch struct {
 	Resource *map[string]any `json:"resource,omitempty"`
 }

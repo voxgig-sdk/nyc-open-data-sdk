@@ -97,7 +97,7 @@ catalog := client.Catalog(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `resource` | ``$OBJECT`` | No |  |
+| `resource` | `map[string]any` | No |  |
 
 ### Operations
 

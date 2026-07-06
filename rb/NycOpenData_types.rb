@@ -17,7 +17,7 @@ Catalog = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Catalog#list (any subset of Catalog fields).
+# Request payload for Catalog#list.
 #
 # @!attribute [rw] resource
 #   @return [Hash, nil]

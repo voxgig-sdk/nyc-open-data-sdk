@@ -9,5 +9,7 @@ export interface Catalog {
   resource?: Record<string, any>
 }
 
-export type CatalogListMatch = Partial<Catalog>
+export interface CatalogListMatch {
+  resource?: Record<string, any>
+}
 

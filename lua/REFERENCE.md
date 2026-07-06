@@ -90,7 +90,7 @@ local catalog = client:Catalog(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `resource` | ``$OBJECT`` | No |  |
+| `resource` | `table` | No |  |
 
 ### Operations
 

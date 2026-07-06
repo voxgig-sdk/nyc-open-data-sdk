@@ -8,7 +8,7 @@ Complete API reference for the NycOpenData Python SDK.
 ### Constructor
 
 ```python
-from nyc-open-data_sdk import NycOpenDataSDK
+from nycopendata_sdk import NycOpenDataSDK
 
 client = NycOpenDataSDK(options)
 ```
@@ -87,16 +87,16 @@ catalog = client.Catalog()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `resource` | ``$OBJECT`` | No |  |
+| `resource` | `dict` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Catalog().list({})
+results = client.Catalog().list()
 for catalog in results:
     print(catalog)
 ```

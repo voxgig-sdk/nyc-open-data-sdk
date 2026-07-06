@@ -116,7 +116,7 @@ const catalog = client.Catalog()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `resource` | ``$OBJECT`` | No |  |
+| `resource` | `Record<string, any>` | No |  |
 
 ### Operations
 
