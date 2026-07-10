@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -257,15 +254,18 @@
           "url": "https://opendata.cityofnewyork.us/"
         },
         "description": "Helps New Yorkers use and learn about City data. Open Data is free public data published by New York City agencies and other partners. Access datasets by agency, category, and explore APIs for NYC government data.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "NYC Open Data API Server",
             "url": "https://data.cityofnewyork.us"
           }
         ],
+        "summary": "Helps New Yorkers use and learn about City data.",
         "termsOfService": "https://opendata.cityofnewyork.us/overview/#termsofuse",
         "title": "NYC Open Data",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://data.cityofnewyork.us"
       },
       "option": {},
       "target": {
@@ -318,6 +318,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -368,6 +371,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

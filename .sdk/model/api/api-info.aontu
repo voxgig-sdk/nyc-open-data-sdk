@@ -16,10 +16,10 @@ main: {
           url: "https://data.cityofnewyork.us"
         }
       ]
+      summary: "Helps New Yorkers use and learn about City data."
       termsOfService: "https://opendata.cityofnewyork.us/overview/#termsofuse"
       title: "NYC Open Data"
       version: "1.0.0"
+      website: "https://data.cityofnewyork.us"
     }
   }
-}
-

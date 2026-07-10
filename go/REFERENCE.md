@@ -91,6 +91,7 @@ same parameters as `Direct()`.
 
 ```go
 catalog := client.Catalog(nil)
+fmt.Println(catalog.GetName()) // "catalog"
 ```
 
 ### Fields
@@ -107,6 +108,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Catalog(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
