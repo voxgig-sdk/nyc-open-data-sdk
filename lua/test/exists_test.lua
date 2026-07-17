@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- NycOpenData SDK exists test
 
 local sdk = require("nyc-open-data_sdk")
 
