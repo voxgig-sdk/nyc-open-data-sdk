@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import NycOpenDataSDK
-from core.error import NycOpenDataError
-from core.result import NycOpenDataResult
-from core.response import NycOpenDataResponse
-from core.spec import NycOpenDataSpec
-from feature.base_feature import NycOpenDataBaseFeature
+from projectname_sdk.core.error import NycOpenDataError
+from projectname_sdk.core.result import NycOpenDataResult
+from projectname_sdk.core.response import NycOpenDataResponse
+from projectname_sdk.core.spec import NycOpenDataSpec
+from projectname_sdk.feature.base_feature import NycOpenDataBaseFeature
 
 
 def _client():

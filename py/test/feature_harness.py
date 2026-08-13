@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import NycOpenDataControl
-from core.error import NycOpenDataError
-from core.result import NycOpenDataResult
-from core.spec import NycOpenDataSpec
+from nycopendata_sdk.config import make_config
+from nycopendata_sdk.features import _make_feature
+from nycopendata_sdk.core.control import NycOpenDataControl
+from nycopendata_sdk.core.error import NycOpenDataError
+from nycopendata_sdk.core.result import NycOpenDataResult
+from nycopendata_sdk.core.spec import NycOpenDataSpec
 
 
 # True when this SDK was generated with the named feature.

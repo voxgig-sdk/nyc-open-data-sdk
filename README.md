@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = NycOpenDataSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = NycOpenDataSDK.test({
+  entity: {
+    catalog: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const catalogs = await client.Catalog().list()
-// catalogs is an array of bare Catalog records populated with mock data
+// catalogs is an array of Catalog entities, populated with mock data
+// — call catalogs[0].data() for the record itself
 console.log(catalogs)
 ```
 
@@ -110,7 +119,7 @@ import { NycOpenDataSDK } from '@voxgig-sdk/nyc-open-data'
 
 const client = new NycOpenDataSDK()
 
-// List all catalogs (returns Catalog[])
+// List all catalogs (returns CatalogEntity[] — .data() for the record)
 const catalogs = await client.Catalog().list()
 for (const catalog of catalogs) {
   console.log(catalog)
@@ -343,6 +352,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://opendata.cityofnewyork.us/](https://opendata.cityofnewyork.us/)
 

@@ -9,6 +9,7 @@ guide: {
     path: "/api/catalog/v1": {
       action: "v1": {}
       op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
     }
   }
 

@@ -37,7 +37,7 @@ class CatalogEntity extends NycOpenDataEntityBase<Catalog> {
 
 
 
-  async list(this: any, reqmatch?: CatalogListMatch, ctrl?: Control): Promise<Catalog[]> {
+  async list(this: any, reqmatch?: CatalogListMatch, ctrl?: Control): Promise<CatalogEntity[]> {
 
     const utility = this._utility
 

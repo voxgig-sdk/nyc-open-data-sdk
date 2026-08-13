@@ -118,6 +118,26 @@ const catalog = client.Catalog()
 | --- | --- | --- | --- |
 | `resource` | `Record<string, any>` | No |  |
 
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `v1` | `/api/catalog/v1` | `client.Catalog().list({ $action: 'v1', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Catalog record — check the API definition for its shape.
+
+```ts
+const result = await client.Catalog().list({
+  $action: 'v1',
+  /* ...the action's own arguments */
+})
+```
+
 ### Operations
 
 #### `list(match: object, ctrl?: object)`

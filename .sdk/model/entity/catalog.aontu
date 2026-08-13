@@ -87,7 +87,7 @@ main: kit: entity: catalog: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]

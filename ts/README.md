@@ -35,7 +35,9 @@ const client = new NycOpenDataSDK()
 
 ### 2. List catalog records
 
-`list()` resolves to an array of Catalog objects — iterate it directly:
+`list()` resolves to an array of Catalog ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const catalogs = await client.Catalog().list()
@@ -120,7 +122,8 @@ Create a mock client for unit testing — no server required:
 const client = NycOpenDataSDK.test()
 
 const catalog = await client.Catalog().list()
-// catalog is a bare entity populated with mock response data
+// catalog is the entity, populated with mock response data
+// — call catalog.data() for the record itself
 console.log(catalog)
 ```
 

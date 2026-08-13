@@ -218,9 +218,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local catalog, err = client:Catalog():load()
+    local catalog, err = client:Catalog():list()
     if err then error(err) end
-    -- catalog is the loaded record
+    -- catalog is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.

@@ -11,5 +11,11 @@ export interface Catalog {
 
 export interface CatalogListMatch {
   resource?: Record<string, any>
+
+  // Selects a custom action instead of the plain list:
+  //   'v1'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 

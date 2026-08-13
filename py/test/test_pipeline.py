@@ -16,11 +16,11 @@
 import pytest
 
 from nycopendata_sdk import NycOpenDataSDK
-from core.error import NycOpenDataError
-from core.result import NycOpenDataResult
-from core.response import NycOpenDataResponse
-from core.spec import NycOpenDataSpec
-from feature.base_feature import NycOpenDataBaseFeature
+from nycopendata_sdk.core.error import NycOpenDataError
+from nycopendata_sdk.core.result import NycOpenDataResult
+from nycopendata_sdk.core.response import NycOpenDataResponse
+from nycopendata_sdk.core.spec import NycOpenDataSpec
+from nycopendata_sdk.feature.base_feature import NycOpenDataBaseFeature
 
 
 def _client():

@@ -43,8 +43,8 @@ class NycOpenDataTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('NYCOPENDATA_TEST_LIVE');
-        $override = self::getenv('NYCOPENDATA_TEST_OVERRIDE');
+        $live = self::getenv('NYC_OPEN_DATA_TEST_LIVE');
+        $override = self::getenv('NYC_OPEN_DATA_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class NycOpenDataTestRunner
             }
         }
 
-        $explain = self::getenv('NYCOPENDATA_TEST_EXPLAIN');
+        $explain = self::getenv('NYC_OPEN_DATA_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['NYCOPENDATA_TEST_EXPLAIN'] = $explain;
+            $m['NYC_OPEN_DATA_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

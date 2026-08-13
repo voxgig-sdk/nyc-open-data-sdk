@@ -26,8 +26,8 @@ import {
 describe('CatalogEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when NYCOPENDATA_TEST_LIVE=TRUE.
-  afterEach(liveDelay('NYCOPENDATA_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when NYC_OPEN_DATA_TEST_LIVE=TRUE.
+  afterEach(liveDelay('NYC_OPEN_DATA_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = NycOpenDataSDK.test()
@@ -63,7 +63,7 @@ describe('CatalogEntity', async () => {
     const catalog_ref01_ent = client.Catalog()
     const catalog_ref01_match: any = {}
 
-    const catalog_ref01_list = await catalog_ref01_ent.list(catalog_ref01_match)
+    const catalog_ref01_list = (await catalog_ref01_ent.list(catalog_ref01_match)).map((e: any) => e.data())
 
 
   })

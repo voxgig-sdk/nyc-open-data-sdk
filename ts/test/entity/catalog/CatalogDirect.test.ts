@@ -19,11 +19,15 @@ import {
 describe('CatalogDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when NYCOPENDATA_TEST_LIVE=TRUE.
-  afterEach(liveDelay('NYCOPENDATA_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when NYC_OPEN_DATA_TEST_LIVE=TRUE.
+  afterEach(liveDelay('NYC_OPEN_DATA_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new NycOpenDataSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -77,17 +81,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'NYCOPENDATA_TEST_CATALOG_ENTID': {},
-    'NYCOPENDATA_TEST_LIVE': 'FALSE',
+    'NYC_OPEN_DATA_TEST_CATALOG_ENTID': {},
+    'NYC_OPEN_DATA_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.NYCOPENDATA_TEST_LIVE
+  const live = 'TRUE' === env.NYC_OPEN_DATA_TEST_LIVE
 
   if (live) {
     const client = new NycOpenDataSDK({
     })
 
-    let idmap: any = env['NYCOPENDATA_TEST_CATALOG_ENTID']
+    let idmap: any = env['NYC_OPEN_DATA_TEST_CATALOG_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

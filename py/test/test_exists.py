@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# NycOpenData SDK exists test
 
 import pytest
 from nycopendata_sdk import NycOpenDataSDK

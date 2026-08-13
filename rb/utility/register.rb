@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ NycOpenDataUtility.registrar = ->(u) {
   u.prepare_params = NycOpenDataUtilities::PrepareParams
   u.prepare_path = NycOpenDataUtilities::PreparePath
   u.prepare_query = NycOpenDataUtilities::PrepareQuery
+  u.graphql_body = NycOpenDataUtilities::GraphqlBody
+  u.graphql_errors = NycOpenDataUtilities::GraphqlErrors
   u.result_basic = NycOpenDataUtilities::ResultBasic
   u.result_body = NycOpenDataUtilities::ResultBody
   u.result_headers = NycOpenDataUtilities::ResultHeaders

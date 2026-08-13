@@ -96,6 +96,7 @@ module NycOpenDataConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/catalog/v1",
                   "parts" => [
@@ -116,7 +117,7 @@ module NycOpenDataConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.results`",
                   },
                   "index$" => 0,
                 },
