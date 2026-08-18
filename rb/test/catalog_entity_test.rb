@@ -33,7 +33,7 @@ class CatalogEntityTest < Minitest::Test
     assert_equal 3, seen.length
 
     # Inbound: streaming active -> yields each item from the feature.
-    cfg = NycOpenDataConfig.make_config
+    cfg = NycOpenDataConfig.shared_config
     if cfg["feature"].is_a?(Hash) && cfg["feature"].key?("streaming")
       sdk = NycOpenDataSDK.test(seed, { "feature" => { "streaming" => { "active" => true } } })
       got = []

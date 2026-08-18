@@ -15,7 +15,7 @@ require_relative "../NycOpenData_sdk"
 module NycOpenDataFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = NycOpenDataConfig.make_config["feature"]
+    f = NycOpenDataConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

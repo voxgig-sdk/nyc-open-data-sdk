@@ -28,7 +28,7 @@ class NycOpenDataSDK
     utility = NycOpenDataUtility.new
     @_utility = utility
 
-    config = NycOpenDataConfig.make_config
+    config = NycOpenDataConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

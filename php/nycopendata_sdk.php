@@ -40,7 +40,7 @@ class NycOpenDataSDK
         $utility = new NycOpenDataUtility();
         $this->_utility = $utility;
 
-        $config = NycOpenDataConfig::make_config();
+        $config = NycOpenDataConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
