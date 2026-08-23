@@ -19,6 +19,9 @@ module NycOpenDataConfig
     {
       "main" => {
         "name" => "NycOpenData",
+        "slug" => "nyc-open-data",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
