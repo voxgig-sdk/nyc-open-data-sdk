@@ -28,6 +28,7 @@ module NycOpenDataConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
