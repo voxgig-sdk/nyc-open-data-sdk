@@ -10,7 +10,12 @@ export interface Catalog {
 }
 
 export interface CatalogListMatch {
-  resource?: Record<string, any>
+  agency?: string
+  category?: string
+  limit?: number
+  offset?: number
+  q?: string
+  sort?: string
 
   // Selects a custom action instead of the plain list:
   //   'v1'

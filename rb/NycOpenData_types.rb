@@ -19,10 +19,30 @@ Catalog = Struct.new(
 
 # Request payload for Catalog#list.
 #
-# @!attribute [rw] resource
-#   @return [Hash, nil]
+# @!attribute [rw] agency
+#   @return [String, nil]
+#
+# @!attribute [rw] category
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] offset
+#   @return [Integer, nil]
+#
+# @!attribute [rw] q
+#   @return [String, nil]
+#
+# @!attribute [rw] sort
+#   @return [String, nil]
 CatalogListMatch = Struct.new(
-  :resource,
+  :agency,
+  :category,
+  :limit,
+  :offset,
+  :q,
+  :sort,
   keyword_init: true
 )
 

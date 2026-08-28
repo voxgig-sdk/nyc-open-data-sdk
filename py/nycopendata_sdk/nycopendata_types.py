@@ -21,4 +21,9 @@ class Catalog(TypedDict, total=False):
 
 
 class CatalogListMatch(TypedDict, total=False):
-    resource: dict
+    agency: str
+    category: str
+    limit: int
+    offset: int
+    q: str
+    sort: str

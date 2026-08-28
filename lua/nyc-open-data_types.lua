@@ -10,7 +10,12 @@
 ---@field resource? table
 
 ---@class CatalogListMatch
----@field resource? table
+---@field agency? string
+---@field category? string
+---@field limit? number
+---@field offset? number
+---@field q? string
+---@field sort? string
 
 local M = {}
 

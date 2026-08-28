@@ -21,6 +21,11 @@ class Catalog
 /** Request payload for Catalog#list. */
 class CatalogListMatch
 {
-    public ?array $resource = null;
+    public ?string $agency = null;
+    public ?string $category = null;
+    public ?int $limit = null;
+    public ?int $offset = null;
+    public ?string $q = null;
+    public ?string $sort = null;
 }
 

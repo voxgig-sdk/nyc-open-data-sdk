@@ -19,7 +19,12 @@ type Catalog struct {
 
 // CatalogListMatch is the typed request payload for Catalog.ListTyped.
 type CatalogListMatch struct {
-	Resource *map[string]any `json:"resource,omitempty"`
+	Agency *string `json:"agency,omitempty"`
+	Category *string `json:"category,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Offset *int `json:"offset,omitempty"`
+	Q *string `json:"q,omitempty"`
+	Sort *string `json:"sort,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the
