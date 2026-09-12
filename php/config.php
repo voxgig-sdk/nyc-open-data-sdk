@@ -115,10 +115,16 @@ class NycOpenDataConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/catalog/v1',
-                  'parts' => [
-                    'api',
-                    'catalog',
-                    'v1',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'catalog',
+                    ],
+                    [
+                      'lit' => 'v1',
+                    ],
                   ],
                   'select' => [
                     '$action' => 'v1',
@@ -134,6 +140,11 @@ class NycOpenDataConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.results`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'catalog',
+                    'v1',
                   ],
                 ],
               ],

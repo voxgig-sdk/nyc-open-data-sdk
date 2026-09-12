@@ -93,10 +93,16 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/catalog/v1",
-								"parts": []any{
-									"api",
-									"catalog",
-									"v1",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "catalog",
+									},
+									map[string]any{
+										"lit": "v1",
+									},
 								},
 								"select": map[string]any{
 									"$action": "v1",
@@ -113,6 +119,11 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body.results`",
 								},
+								"parts": []any{
+									"api",
+									"catalog",
+									"v1",
+								},
 							},
 						},
 					},
@@ -123,6 +134,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

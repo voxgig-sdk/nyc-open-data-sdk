@@ -89,10 +89,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/catalog/v1",
-                ["parts"] = {
-                  "api",
-                  "catalog",
-                  "v1",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "catalog",
+                  },
+                  {
+                    ["lit"] = "v1",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "v1",
@@ -108,6 +114,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.results`",
+                },
+                ["parts"] = {
+                  "api",
+                  "catalog",
+                  "v1",
                 },
               },
             },
