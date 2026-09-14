@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { NycOpenDataSDK } from '@voxgig-sdk/nyc-open-data'
+import { NycOpenDataSDK } from '@voxgig-sdk/nyc-open-data-sdk'
 
 const client = new NycOpenDataSDK()
 ```
@@ -403,7 +403,7 @@ nyc-open-data/
 Import the SDK from the package root:
 
 ```ts
-import { NycOpenDataSDK } from '@voxgig-sdk/nyc-open-data'
+import { NycOpenDataSDK } from '@voxgig-sdk/nyc-open-data-sdk'
 ```
 
 ### Entity state

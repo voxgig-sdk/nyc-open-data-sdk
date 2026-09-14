@@ -105,7 +105,7 @@ local results, err = client:Catalog():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/nyc-open-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nyc-open-data-sdk/releases) |
+| TypeScript | `@voxgig-sdk/nyc-open-data-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nyc-open-data-sdk/releases) |
 | Python | `voxgig-sdk-nyc-open-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nyc-open-data-sdk/releases) |
 | PHP | `voxgig-sdk/nyc-open-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nyc-open-data-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/nyc-open-data-sdk/go` | `go get github.com/voxgig-sdk/nyc-open-data-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Catalog():list()
 ### TypeScript
 
 ```ts
-import { NycOpenDataSDK } from '@voxgig-sdk/nyc-open-data'
+import { NycOpenDataSDK } from '@voxgig-sdk/nyc-open-data-sdk'
 
 const client = new NycOpenDataSDK()
 
