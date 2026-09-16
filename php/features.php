@@ -4,7 +4,10 @@ declare(strict_types=1);
 // NycOpenData SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class NycOpenDataFeatures
@@ -14,8 +17,14 @@ class NycOpenDataFeatures
         switch ($name) {
             case "base":
                 return new NycOpenDataBaseFeature();
+            case "ratelimit":
+                return new NycOpenDataRatelimitFeature();
+            case "retry":
+                return new NycOpenDataRetryFeature();
             case "test":
                 return new NycOpenDataTestFeature();
+            case "timeout":
+                return new NycOpenDataTimeoutFeature();
             default:
                 return new NycOpenDataBaseFeature();
         }
@@ -31,7 +40,10 @@ class NycOpenDataFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;
