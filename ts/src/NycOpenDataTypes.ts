@@ -6,7 +6,6 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Catalog {
-  resource?: Record<string, any>
 }
 
 export interface CatalogListMatch {

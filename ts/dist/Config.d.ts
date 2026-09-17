@@ -74,10 +74,7 @@ declare class Config {
     };
     entity: {
         catalog: {
-            fields: {
-                name: string;
-                type: string;
-            }[];
+            fields: never[];
             name: string;
             op: {
                 list: {

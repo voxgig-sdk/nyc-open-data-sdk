@@ -94,12 +94,6 @@ catalog := client.Catalog(nil)
 fmt.Println(catalog.GetName()) // "catalog"
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `resource` | `map[string]any` | No |  |
-
 ### Operations
 
 #### `List(reqmatch, ctrl map[string]any) (any, error)`

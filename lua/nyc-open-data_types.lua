@@ -7,7 +7,6 @@
 -- edit by hand.
 
 ---@class Catalog
----@field resource? table
 
 ---@class CatalogListMatch
 ---@field agency? string

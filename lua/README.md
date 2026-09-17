@@ -43,7 +43,7 @@ local catalogs, err = client:Catalog():list()
 if err then error(err) end
 
 for _, item in ipairs(catalogs) do
-  print(item["resource"])
+  print(item)
 end
 ```
 
@@ -231,7 +231,6 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `resource` |  |
 
 Operations: List.
 
@@ -251,12 +250,6 @@ Create an instance: `local catalog = client:Catalog(nil)`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `resource` | `table` |  |
 
 #### Example: List
 
@@ -407,6 +400,7 @@ Use `helpers.to_map()` to safely validate that a value is a table.
 lua/
 ├── nyc-open-data_sdk.lua    -- Main SDK module
 ├── config.lua               -- Configuration
+├── schema.lua               -- Generated option + entity specs
 ├── features.lua             -- Feature factory
 ├── core/                    -- Core types and context
 ├── entity/                  -- Entity implementations

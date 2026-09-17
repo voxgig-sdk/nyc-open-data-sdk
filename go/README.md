@@ -260,7 +260,6 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"resource"` |  |
 
 Operations: List.
 
@@ -280,12 +279,6 @@ Create an instance: `catalog := client.Catalog(nil)`
 | Method | Description |
 | --- | --- |
 | `List(match, ctrl)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `resource` | `map[string]any` |  |
 
 #### Example: List
 

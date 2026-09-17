@@ -16,8 +16,8 @@ from __future__ import annotations
 from typing import TypedDict, Any
 
 
-class Catalog(TypedDict, total=False):
-    resource: dict
+class Catalog(TypedDict):
+    pass
 
 
 class CatalogListMatch(TypedDict, total=False):

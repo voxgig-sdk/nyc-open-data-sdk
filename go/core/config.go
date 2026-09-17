@@ -88,12 +88,7 @@ func MakeConfig() map[string]any {
 		},
 		"entity": map[string]any{
 			"catalog": map[string]any{
-				"fields": []any{
-					map[string]any{
-						"name": "resource",
-						"type": "`$OBJECT`",
-					},
-				},
+				"fields": []any{},
 				"name": "catalog",
 				"op": map[string]any{
 					"list": map[string]any{

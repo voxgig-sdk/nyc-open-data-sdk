@@ -113,12 +113,7 @@ def make_config():
         },
         "entity": {
       "catalog": {
-        "fields": [
-          {
-            "name": "resource",
-            "type": "`$OBJECT`",
-          },
-        ],
+        "fields": [],
         "name": "catalog",
         "op": {
           "list": {

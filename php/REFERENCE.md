@@ -88,12 +88,6 @@ Prepare a fetch definition without sending the request. Returns the
 $catalog = $client->Catalog();
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `resource` | `array` | No |  |
-
 ### Operations
 
 #### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`

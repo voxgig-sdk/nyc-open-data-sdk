@@ -86,12 +86,6 @@ same parameters as `direct()`.
 local catalog = client:Catalog(nil)
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `resource` | `table` | No |  |
-
 ### Operations
 
 #### `list(reqmatch, ctrl) -> any, err`

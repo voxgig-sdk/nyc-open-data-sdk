@@ -292,7 +292,6 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `resource` |  |
 
 Operations: list.
 
@@ -312,12 +311,6 @@ Create an instance: `const catalog = client.Catalog()`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `resource` | `Record<string, any>` |  |
 
 #### Example: List
 

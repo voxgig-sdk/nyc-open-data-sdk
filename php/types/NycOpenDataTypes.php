@@ -15,7 +15,6 @@ declare(strict_types=1);
 /** Catalog entity data model. */
 class Catalog
 {
-    public ?array $resource = null;
 }
 
 /** Request payload for Catalog#list. */

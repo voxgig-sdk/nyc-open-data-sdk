@@ -37,7 +37,7 @@ begin
   # list returns an Array of Catalog records — iterate directly.
   catalogs = client.Catalog.list
   catalogs.each do |item|
-    puts "#{item["resource"]}"
+    puts "#{item}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -237,7 +237,6 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `resource` |  |
 
 Operations: List.
 
@@ -257,12 +256,6 @@ Create an instance: `catalog = client.Catalog`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `resource` | `Hash` |  |
 
 #### Example: List
 
@@ -414,6 +407,7 @@ Use `Helpers.to_map()` to safely validate that a value is a hash.
 rb/
 ├── NycOpenData_sdk.rb       -- Main SDK module
 ├── config.rb                  -- Configuration
+├── schema.rb                  -- Generated option + entity specs
 ├── features.rb                -- Feature factory
 ├── core/                      -- Core types and context
 ├── entity/                    -- Entity implementations

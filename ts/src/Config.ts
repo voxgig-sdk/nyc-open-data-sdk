@@ -127,21 +127,16 @@ class Config {
 
     entity: {
       
-      catalog: {
-      },
-
+        catalog: {
+        },
+  
     }
   }
 
 
   entity = {
     "catalog": {
-      "fields": [
-        {
-          "name": "resource",
-          "type": "`$OBJECT`"
-        }
-      ],
+      "fields": [],
       "name": "catalog",
       "op": {
         "list": {

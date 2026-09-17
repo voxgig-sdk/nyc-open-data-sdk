@@ -4,14 +4,6 @@ main: kit: entity: catalog: {
 
   alias: field: {}
 
-  fields: [
-    {
-      name: "resource"
-      req: false
-      type: "`$OBJECT`"
-    }
-  ]
-
   name: "catalog"
   op: {
     list: {

@@ -83,12 +83,6 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 catalog = client.Catalog()
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `resource` | `dict` | No |  |
-
 ### Operations
 
 #### `list(reqmatch=None, ctrl=None) -> list`

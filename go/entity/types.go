@@ -14,7 +14,6 @@ import (
 
 // Catalog is the typed data model for the catalog entity.
 type Catalog struct {
-	Resource *map[string]any `json:"resource,omitempty"`
 }
 
 // CatalogListMatch is the typed request payload for Catalog.ListTyped.

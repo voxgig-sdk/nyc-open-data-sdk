@@ -1,5 +1,4 @@
 export interface Catalog {
-    resource?: Record<string, any>;
 }
 export interface CatalogListMatch {
     agency?: string;

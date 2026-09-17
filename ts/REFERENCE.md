@@ -112,12 +112,6 @@ Alias for `NycOpenDataSDK.test()`.
 const catalog = client.Catalog()
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `resource` | `Record<string, any>` | No |  |
-
 ### Actions
 
 This entity exposes custom API actions in addition to the standard

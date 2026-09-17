@@ -105,12 +105,12 @@ local results, err = client:Catalog():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/nyc-open-data-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nyc-open-data-sdk/releases) |
-| Python | `voxgig-sdk-nyc-open-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nyc-open-data-sdk/releases) |
-| PHP | `voxgig-sdk/nyc-open-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nyc-open-data-sdk/releases) |
+| TypeScript | `@voxgig-sdk/nyc-open-data-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nyc-open-data-sdk/tags) |
+| Python | `voxgig-sdk-nyc-open-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nyc-open-data-sdk/tags) |
+| PHP | `voxgig-sdk/nyc-open-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nyc-open-data-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/nyc-open-data-sdk/go` | `go get github.com/voxgig-sdk/nyc-open-data-sdk/go@latest` |
-| Ruby | `voxgig-sdk-nyc-open-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nyc-open-data-sdk/releases) |
-| Lua | `voxgig-sdk-nyc-open-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nyc-open-data-sdk/releases) |
+| Ruby | `voxgig-sdk-nyc-open-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nyc-open-data-sdk/tags) |
+| Lua | `voxgig-sdk-nyc-open-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nyc-open-data-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/nyc-open-data-sdk/go-cli` | `go install github.com/voxgig-sdk/nyc-open-data-sdk/go-cli/cmd/nyc-open-data@latest` |
 | Go MCP server | `github.com/voxgig-sdk/nyc-open-data-sdk/go-mcp` | `go get github.com/voxgig-sdk/nyc-open-data-sdk/go-mcp@latest` |
 

@@ -9,13 +9,8 @@
 # annotations document the shapes. Do not edit by hand.
 
 # Catalog entity data model.
-#
-# @!attribute [rw] resource
-#   @return [Hash, nil]
-Catalog = Struct.new(
-  :resource,
-  keyword_init: true
-)
+class Catalog
+end
 
 # Request payload for Catalog#list.
 #
