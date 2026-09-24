@@ -24,13 +24,79 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "catalog": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [],
+          "fields": {},
           "name": "catalog",
           "op": {
             "list": {
@@ -38,83 +104,71 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/catalog/v1",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "agency",
-                        "orig": "agency",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "agency",
+                        "or": "agency",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "category",
-                        "orig": "category",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "category",
+                        "or": "category",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 10,
-                        "kind": "query",
-                        "name": "limit",
-                        "orig": "limit",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 10,
+                        "k": "query",
+                        "n": "limit",
+                        "or": "limit",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": 0,
-                        "kind": "query",
-                        "name": "offset",
-                        "orig": "offset",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 0,
+                        "k": "query",
+                        "n": "offset",
+                        "or": "offset",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "q",
-                        "orig": "q",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "q",
+                        "or": "q",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "relevance",
-                        "kind": "query",
-                        "name": "sort",
-                        "orig": "sort",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "relevance",
+                        "k": "query",
+                        "n": "sort",
+                        "or": "sort",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/catalog/v1",
-                    "json": "{\"operationId\":\"searchDatasets\",\"parameters\":[{\"description\":\"Search query to filter datasets\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter datasets by NYC agency\",\"in\":\"query\",\"name\":\"agency\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter datasets by category (e.g., Business, Education, Environment)\",\"in\":\"query\",\"name\":\"category\",\"required\":false,\"schema\":{\"enum\":[\"Business\",\"Education\",\"Environment\",\"Health\",\"Transportation\",\"Public Safety\",\"Recreation\",\"Social Services\"],\"type\":\"string\"}},{\"description\":\"Number of results to return\",\"in\":\"query\",\"name\":\"limit\",\"required\":false,\"schema\":{\"default\":10,\"maximum\":100,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Number of results to skip for pagination\",\"in\":\"query\",\"name\":\"offset\",\"required\":false,\"schema\":{\"default\":0,\"minimum\":0,\"type\":\"integer\"}},{\"description\":\"Sort order for results\",\"in\":\"query\",\"name\":\"sort\",\"required\":false,\"schema\":{\"default\":\"relevance\",\"enum\":[\"relevance\",\"newest\",\"popular\",\"alphabetical\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"resultSetSize\":{\"description\":\"Total number of results matching the query\",\"type\":\"integer\"},\"results\":{\"items\":{\"properties\":{\"resource\":{\"properties\":{\"agency\":{\"description\":\"NYC agency that published the dataset\",\"type\":\"string\"},\"category\":{\"description\":\"Category classification\",\"type\":\"string\"},\"columns\":{\"description\":\"List of columns/fields in the dataset\",\"items\":{\"properties\":{\"dataTypeName\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"fieldName\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"createdAt\":{\"description\":\"Date and time the dataset was created\",\"format\":\"date-time\",\"type\":\"string\"},\"description\":{\"description\":\"Detailed description of the dataset\",\"type\":\"string\"},\"downloadCount\":{\"description\":\"Number of downloads for this dataset\",\"type\":\"integer\"},\"id\":{\"description\":\"Unique identifier for the dataset\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the dataset\",\"type\":\"string\"},\"permalink\":{\"description\":\"Permanent link to the dataset\",\"format\":\"uri\",\"type\":\"string\"},\"type\":{\"description\":\"Type of resource (e.g., dataset, chart, map)\",\"type\":\"string\"},\"updatedAt\":{\"description\":\"Date and time the dataset was last updated\",\"format\":\"date-time\",\"type\":\"string\"},\"viewCount\":{\"description\":\"Number of views for this dataset\",\"type\":\"integer\"}},\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with list of datasets\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"description\":\"Error code\",\"type\":\"string\"},\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad request - invalid parameters\"},\"429\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Rate limit error message\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Too many requests - rate limit exceeded\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/catalog/v1",
-                  "segments": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "catalog"
-                    },
-                    {
-                      "lit": "v1"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/catalog/v1",
+                  "q": {
                     "$action": "v1",
                     "exist": [
                       "agency",
@@ -125,7 +179,19 @@
                       "sort"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "catalog"
+                    },
+                    {
+                      "lit": "v1"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.results`"
                   }
@@ -554,13 +620,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {

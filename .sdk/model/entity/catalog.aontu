@@ -1,0 +1,105 @@
+# Entity: catalog
+
+main: kit: entity: catalog: {
+
+  alias: field: {}
+
+  name: "catalog"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/catalog/v1"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "agency"
+                or: "agency"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "category"
+                or: "category"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 10
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 0
+                k: "query"
+                n: "offset"
+                or: "offset"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "relevance"
+                k: "query"
+                n: "sort"
+                or: "sort"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/catalog/v1"
+          q: {
+            "$action": "v1"
+            exist: [
+              "agency"
+              "category"
+              "limit"
+              "offset"
+              "q"
+              "sort"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "catalog"
+            }
+            {
+              lit: "v1"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

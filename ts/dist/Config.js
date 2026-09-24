@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -119,49 +112,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "agency",
-                                        "orig": "agency",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "category",
-                                        "orig": "category",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 10,
-                                        "kind": "query",
-                                        "name": "limit",
-                                        "orig": "limit",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": 0,
-                                        "kind": "query",
-                                        "name": "offset",
-                                        "orig": "offset",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "q",
-                                        "orig": "q",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": "relevance",
-                                        "kind": "query",
-                                        "name": "sort",
-                                        "orig": "sort",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/api/catalog/v1",
@@ -176,6 +126,59 @@ class Config {
                                     "lit": "v1"
                                 }
                             ],
+                            "parts": [
+                                "api",
+                                "catalog",
+                                "v1"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body.results`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "agency",
+                                        "orig": "agency",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "category",
+                                        "orig": "category",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "limit",
+                                        "orig": "limit",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 10
+                                    },
+                                    {
+                                        "name": "offset",
+                                        "orig": "offset",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 0
+                                    },
+                                    {
+                                        "name": "q",
+                                        "orig": "q",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "sort",
+                                        "orig": "sort",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "relevance"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "$action": "v1",
                                 "exist": [
@@ -186,16 +189,7 @@ class Config {
                                     "q",
                                     "sort"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body.results`"
-                            },
-                            "parts": [
-                                "api",
-                                "catalog",
-                                "v1"
-                            ]
+                            }
                         }
                     ]
                 }

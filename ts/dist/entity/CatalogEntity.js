@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CatalogEntity = void 0;
 const NycOpenDataEntityBase_1 = require("../NycOpenDataEntityBase");
-// TODO: needs Entity superclass
 class CatalogEntity extends NycOpenDataEntityBase_1.NycOpenDataEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

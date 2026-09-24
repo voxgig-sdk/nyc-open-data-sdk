@@ -121,49 +121,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "agency",
-                      "orig": "agency",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "category",
-                      "orig": "category",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 10,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "offset",
-                      "orig": "offset",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "q",
-                      "orig": "q",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": "relevance",
-                      "kind": "query",
-                      "name": "sort",
-                      "orig": "sort",
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/catalog/v1",
@@ -178,6 +135,59 @@ def make_config():
                     "lit": "v1",
                   },
                 ],
+                "parts": [
+                  "api",
+                  "catalog",
+                  "v1",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.results`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "agency",
+                      "orig": "agency",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "category",
+                      "orig": "category",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 10,
+                    },
+                    {
+                      "name": "offset",
+                      "orig": "offset",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                    {
+                      "name": "q",
+                      "orig": "q",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "sort",
+                      "orig": "sort",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "relevance",
+                    },
+                  ],
+                },
                 "select": {
                   "$action": "v1",
                   "exist": [
@@ -189,15 +199,6 @@ def make_config():
                     "sort",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.results`",
-                },
-                "parts": [
-                  "api",
-                  "catalog",
-                  "v1",
-                ],
               },
             ],
           },

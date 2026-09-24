@@ -19,7 +19,6 @@ import type {
   CatalogListMatch,
 } from '../NycOpenDataTypes'
 
-// TODO: needs Entity superclass
 class CatalogEntity extends NycOpenDataEntityBase<Catalog> {
 
   constructor(client: NycOpenDataSDK, entopts: any) {
