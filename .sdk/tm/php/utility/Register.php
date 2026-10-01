@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 NycOpenDataUtility::setRegistrar(function (NycOpenDataUtility $u): void {
     $u->clean = [NycOpenDataClean::class, 'call'];
+    $u->clean_add = [NycOpenDataClean::class, 'add'];
+    $u->clean_explain = [NycOpenDataDone::class, 'clean_explain'];
     $u->done = [NycOpenDataDone::class, 'call'];
     $u->make_error = [NycOpenDataMakeError::class, 'call'];
     $u->feature_add = [NycOpenDataFeatureAdd::class, 'call'];

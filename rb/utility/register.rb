@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 NycOpenDataUtility.registrar = ->(u) {
   u.clean = NycOpenDataUtilities::Clean
+  u.clean_add = NycOpenDataUtilities::CleanAdd
+  u.clean_explain = NycOpenDataUtilities::CleanExplain
   u.done = NycOpenDataUtilities::Done
   u.make_error = NycOpenDataUtilities::MakeError
   u.feature_add = NycOpenDataUtilities::FeatureAdd
