@@ -68,14 +68,10 @@ main: kit: entity: catalog: {
           o: "/api/catalog/v1"
           q: {
             "$action": "v1"
-            exist: [
-              "agency"
-              "category"
-              "limit"
-              "offset"
-              "q"
-              "sort"
-            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

@@ -3,5 +3,12 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Helps New Yorkers use and learn about City data. Open Data is free public data published by New York City agencies and other partners. Access datasets by agency, category, and explore APIs for NYC government data.",
+      "NYC Open Data API Server",
+      "Successful response with list of datasets"
+    ]
+  }
 }

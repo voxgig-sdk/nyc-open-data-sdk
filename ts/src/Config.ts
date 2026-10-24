@@ -102,6 +102,7 @@ class Config {
       },
       "optspec": {
         "clearTimer": "`$FUNCTION`",
+        "now": "`$FUNCTION`",
         "setTimer": "`$FUNCTION`"
       },
       "strict": false,
@@ -205,15 +206,11 @@ class Config {
                 ]
               },
               "select": {
-                "$action": "v1",
-                "exist": [
-                  "agency",
-                  "category",
-                  "limit",
-                  "offset",
-                  "q",
-                  "sort"
-                ]
+                "$action": "v1"
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]

@@ -93,6 +93,7 @@ class NycOpenDataConfig
           ],
           'optspec' => [
             'clearTimer' => '`$FUNCTION`',
+            'now' => '`$FUNCTION`',
             'setTimer' => '`$FUNCTION`',
           ],
           'strict' => false,
@@ -187,14 +188,10 @@ class NycOpenDataConfig
                   ],
                   'select' => [
                     '$action' => 'v1',
-                    'exist' => [
-                      'agency',
-                      'category',
-                      'limit',
-                      'offset',
-                      'q',
-                      'sort',
-                    ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],

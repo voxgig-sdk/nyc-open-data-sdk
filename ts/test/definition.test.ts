@@ -19,12 +19,16 @@ const PLAN: any[] = [
     "select": {
       "agency": "v1",
       "category": "v1",
-      "limit": "v1",
-      "offset": "v1",
+      "limit": 10,
+      "offset": 0,
       "q": "v1",
-      "sort": "v1"
+      "sort": "relevance"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [
       "q",
       "agency",
@@ -33,6 +37,32 @@ const PLAN: any[] = [
       "offset",
       "sort"
     ],
+    "queryArgs": [
+      {
+        "name": "agency",
+        "wire": "agency"
+      },
+      {
+        "name": "category",
+        "wire": "category"
+      },
+      {
+        "name": "limit",
+        "wire": "limit"
+      },
+      {
+        "name": "offset",
+        "wire": "offset"
+      },
+      {
+        "name": "q",
+        "wire": "q"
+      },
+      {
+        "name": "sort",
+        "wire": "sort"
+      }
+    ],
     "auth": null,
     "status": 200,
     "sample": {
@@ -40,24 +70,24 @@ const PLAN: any[] = [
       "results": [
         {
           "resource": {
-            "agency": "x",
-            "category": "x",
-            "columns": [
-              {
-                "dataTypeName": "x",
-                "description": "x",
-                "fieldName": "x"
-              }
-            ],
-            "createdAt": "2026-01-01T00:00:00Z",
-            "description": "x",
-            "downloadCount": 1,
             "id": "x",
             "name": "x",
-            "permalink": "x",
+            "description": "x",
             "type": "x",
+            "category": "x",
+            "agency": "x",
+            "createdAt": "2026-01-01T00:00:00Z",
             "updatedAt": "2026-01-01T00:00:00Z",
-            "viewCount": 1
+            "viewCount": 1,
+            "downloadCount": 1,
+            "permalink": "x",
+            "columns": [
+              {
+                "fieldName": "x",
+                "dataTypeName": "x",
+                "description": "x"
+              }
+            ]
           }
         }
       ]

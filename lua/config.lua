@@ -67,6 +67,7 @@ local function make_config()
         },
         ["optspec"] = {
           ["clearTimer"] = "`$FUNCTION`",
+          ["now"] = "`$FUNCTION`",
           ["setTimer"] = "`$FUNCTION`",
         },
         ["strict"] = false,
@@ -161,14 +162,10 @@ local function make_config()
                 },
                 ["select"] = {
                   ["$action"] = "v1",
-                  ["exist"] = {
-                    "agency",
-                    "category",
-                    "limit",
-                    "offset",
-                    "q",
-                    "sort",
-                  },
+                },
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },
